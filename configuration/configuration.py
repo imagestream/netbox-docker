@@ -27,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # access to the server via any other hostnames. The first FQDN in the list will be treated as the preferred name.
 #
 # Example: ALLOWED_HOSTS = ['netbox.example.com', 'netbox.internal.local']
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(' ')
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '10.30.0.53:32790').split(' ')
 
 # PostgreSQL database configuration.
 DATABASE = {
@@ -115,7 +115,7 @@ ENFORCE_GLOBAL_UNIQUE = os.environ.get('ENFORCE_GLOBAL_UNIQUE', 'False').lower()
 
 # Exempt certain models from the enforcement of view permissions. Models listed here will be viewable by all users and
 # by anonymous users. List models in the form `<app>.<model>`. Add '*' to this list to exempt all models.
-EXEMPT_VIEW_PERMISSIONS = list(filter(None, os.environ.get('EXEMPT_VIEW_PERMISSIONS', '').split(' ')))
+EXEMPT_VIEW_PERMISSIONS = list(filter(None, os.environ.get('EXEMPT_VIEW_PERMISSIONS', '*').split(' ')))
 
 # Enable custom logging. Please see the Django documentation for detailed guidance on configuring custom logs:
 #   https://docs.djangoproject.com/en/1.11/topics/logging/
